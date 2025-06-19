@@ -1,0 +1,80 @@
+
+# Routine Radar - Running Instructions
+
+## Prerequisites
+
+Before running this project, make sure you have the following installed:
+- Node.js (version 16 or higher)
+- npm or yarn package manager
+
+## Setup Instructions
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repository-url>
+   cd routine-radar
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or if you prefer yarn:
+   yarn install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or with yarn:
+   yarn dev
+   ```
+
+4. **Open your browser**
+   - The application will be available at `http://localhost:5173`
+   - The development server will automatically reload when you make changes
+
+## Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the project for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run the linter to check for code issues
+
+## Project Features
+
+This Routine Radar application includes:
+- ✅ Daily/Weekly routine planner with calendar view
+- ✅ Habit tracking with streak counters
+- ✅ Progress charts (weekly/monthly)
+- ✅ Dark/Light mode toggle
+- ✅ Custom habit creation with categories
+- ✅ Goal tracking and management
+- ✅ Notes and mood logging
+- ✅ Visual click effects and animations
+
+## Data Storage
+
+The application uses localStorage to persist your data locally in your browser. Your habits, goals, and progress will be saved automatically.
+
+## Troubleshooting
+
+If you encounter any issues:
+
+1. **Clear your browser cache** - Sometimes cached data can cause issues
+2. **Delete node_modules and reinstall**:
+   ```bash
+   rm -rf node_modules
+   npm install
+   ```
+3. **Check Node.js version** - Ensure you're using Node.js version 16 or higher
+4. **Port conflicts** - If port 5173 is busy, Vite will automatically use the next available port
+
+## Browser Support
+
+This application works best in modern browsers:
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+Enjoy tracking your routines with Routine Radar! 🚀
