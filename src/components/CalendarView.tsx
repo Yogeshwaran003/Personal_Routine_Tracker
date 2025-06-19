@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -90,7 +89,11 @@ export const CalendarView = () => {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => setCurrentDate(new Date())}
+          onClick={() => {
+            const today = new Date();
+            setCurrentDate(today);
+            setSelectedDate(today);
+          }}
           className="rounded-full transform hover:scale-105 active:scale-95 transition-all"
         >
           Today

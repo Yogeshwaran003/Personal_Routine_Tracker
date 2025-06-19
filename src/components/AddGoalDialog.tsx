@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,8 +34,6 @@ const categories = [
 export const AddGoalDialog = ({ open, onOpenChange }: AddGoalDialogProps) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [targetValue, setTargetValue] = useState("");
-  const [unit, setUnit] = useState("");
   const [deadline, setDeadline] = useState("");
   const [color, setColor] = useState(goalColors[0]);
   const [category, setCategory] = useState("");
@@ -46,12 +43,10 @@ export const AddGoalDialog = ({ open, onOpenChange }: AddGoalDialogProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (title && targetValue && unit && deadline && category) {
+    if (title && deadline && category) {
       addGoal({
         title,
         description,
-        targetValue: Number(targetValue),
-        unit,
         deadline,
         color,
         category
@@ -60,8 +55,6 @@ export const AddGoalDialog = ({ open, onOpenChange }: AddGoalDialogProps) => {
       // Reset form
       setTitle("");
       setDescription("");
-      setTargetValue("");
-      setUnit("");
       setDeadline("");
       setColor(goalColors[0]);
       setCategory("");
@@ -86,7 +79,7 @@ export const AddGoalDialog = ({ open, onOpenChange }: AddGoalDialogProps) => {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g., Lose 10 pounds"
+              placeholder="e.g., Read more books"
               required
             />
           </div>
@@ -100,31 +93,6 @@ export const AddGoalDialog = ({ open, onOpenChange }: AddGoalDialogProps) => {
               placeholder="Add any additional details about your goal..."
               rows={3}
             />
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="target">Target Value</Label>
-              <Input
-                id="target"
-                type="number"
-                value={targetValue}
-                onChange={(e) => setTargetValue(e.target.value)}
-                placeholder="10"
-                required
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="unit">Unit</Label>
-              <Input
-                id="unit"
-                value={unit}
-                onChange={(e) => setUnit(e.target.value)}
-                placeholder="pounds, hours, books..."
-                required
-              />
-            </div>
           </div>
           
           <div className="space-y-2">

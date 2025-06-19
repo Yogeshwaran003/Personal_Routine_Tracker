@@ -1,13 +1,9 @@
-
 import { useState, useEffect } from 'react';
 
 interface Goal {
   id: string;
   title: string;
   description: string;
-  targetValue: number;
-  currentValue: number;
-  unit: string;
   deadline: string;
   color: string;
   category: string;
@@ -30,14 +26,12 @@ export const useGoals = () => {
     localStorage.setItem('routine-radar-goals', JSON.stringify(goals));
   }, [goals]);
 
-  const addGoal = (goalData: Omit<Goal, 'id' | 'currentValue' | 'createdAt'>) => {
+  const addGoal = (goal: Omit<Goal, 'id' | 'createdAt'>) => {
     const newGoal: Goal = {
-      ...goalData,
+      ...goal,
       id: Date.now().toString(),
-      currentValue: 0,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
-    
     setGoals(prev => [...prev, newGoal]);
   };
 
@@ -53,8 +47,8 @@ export const useGoals = () => {
     ));
   };
 
-  const deleteGoal = (id: string) => {
-    setGoals(prev => prev.filter(goal => goal.id !== id));
+  const deleteGoal = (goalId: string) => {
+    setGoals(prev => prev.filter(goal => goal.id !== goalId));
   };
 
   return {

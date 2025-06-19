@@ -1,14 +1,15 @@
-
 import { useState } from "react";
 import { Edit2, Trash2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useHabits } from "@/hooks/useHabits";
+import { AddHabitDialog } from "./AddHabitDialog";
 
 export const HabitList = () => {
   const { habits, deleteHabit } = useHabits();
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [isAddHabitOpen, setIsAddHabitOpen] = useState(false);
 
   const getHabitStats = (habit: any) => {
     const totalDays = habit.completedDates.length;
@@ -45,7 +46,10 @@ export const HabitList = () => {
         <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           Your Habits
         </h2>
-        <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-full">
+        <Button 
+          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-full"
+          onClick={() => setIsAddHabitOpen(true)}
+        >
           <Plus className="w-4 h-4 mr-2" />
           Add New Habit
         </Button>
@@ -60,7 +64,10 @@ export const HabitList = () => {
           <p className="text-slate-600 dark:text-slate-400 mb-6">
             Create your first habit to start tracking your daily routine.
           </p>
-          <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-full">
+          <Button 
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-full"
+            onClick={() => setIsAddHabitOpen(true)}
+          >
             <Plus className="w-4 h-4 mr-2" />
             Create Your First Habit
           </Button>
@@ -142,6 +149,11 @@ export const HabitList = () => {
           })}
         </div>
       )}
+
+      <AddHabitDialog 
+        open={isAddHabitOpen}
+        onOpenChange={setIsAddHabitOpen}
+      />
     </div>
   );
 };
