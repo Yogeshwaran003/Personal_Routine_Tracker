@@ -4,11 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { HabitCard } from "./HabitCard";
 import { DayNotes } from "./DayNotes";
+import { DayTasksDialog } from "./DayTasksDialog";
 import { useHabits } from "@/hooks/useHabits";
 
 export const CalendarView = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isTasksDialogOpen, setIsTasksDialogOpen] = useState(false);
   const { habits, toggleHabit } = useHabits();
 
   const today = new Date();
@@ -125,7 +127,10 @@ export const CalendarView = () => {
               return (
                 <button
                   key={index}
-                  onClick={() => setSelectedDate(date)}
+                  onClick={() => {
+                    setSelectedDate(date);
+                    setIsTasksDialogOpen(true);
+                  }}
                   className={`
                     relative p-3 h-20 border border-slate-200 dark:border-slate-700 rounded-xl
                     transition-all duration-200 transform hover:scale-105 hover:shadow-lg active:scale-95
@@ -210,6 +215,12 @@ export const CalendarView = () => {
           <DayNotes date={selectedDate} />
         </div>
       </div>
+
+      <DayTasksDialog 
+        open={isTasksDialogOpen}
+        onOpenChange={setIsTasksDialogOpen}
+        date={selectedDate}
+      />
     </div>
   );
 };

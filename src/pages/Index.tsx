@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { Calendar, Plus, BarChart3, Settings, Moon, Sun, Goal } from "lucide-react";
+import { Calendar, Plus, BarChart3, Settings, Moon, Sun, Goal, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -65,15 +64,12 @@ const Index = () => {
             
             <div className="flex items-center space-x-3">
               {/* Streak Counter with Fire Icon */}
-              {currentStreak > 0 && (
-                <div className="flex items-center space-x-2 px-3 py-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
-                  <span className="text-2xl animate-pulse">🔥</span>
-                  <div className="text-sm">
-                    <span className="font-bold text-orange-800 dark:text-orange-200">{currentStreak}</span>
-                    <span className="text-orange-600 dark:text-orange-300 ml-1">days</span>
-                  </div>
+              <div className="flex items-center space-x-2">
+                <Flame className="w-6 h-6 text-slate-900 dark:text-slate-100" strokeWidth={1.5} />
+                <div className="text-sm">
+                  <span className="font-bold text-slate-900 dark:text-slate-100">{currentStreak}</span>
                 </div>
-              )}
+              </div>
               
               <Button
                 variant="outline"
